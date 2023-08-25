@@ -1,0 +1,42 @@
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$desktop-hd-width: 1440px;
+
+@mixin phone {
+  @media (min-width: 1px) and (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) and (max-width: #{$desktop-hd-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop-hd {
+  @media (min-width: #{$desktop-hd-width}) {
+    @content;
+  }
+}
+
+
+// **USAGE:**
+
+//p {
+//  font-size: 16px;
+//
+//  @include tablet {
+//    font-size: 18px;
+//  }
+//
+//  @include desktop {
+//    font-size: 20px;
+//  }
+//}

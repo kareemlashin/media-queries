@@ -1,0 +1,31 @@
+//==============================================================================
+// Component dependences & settings
+//==============================================================================
+
+// These are in Pixels, wil be converted to ems by Sass
+$breakpoints : (
+    "mq-xlarge"  : ( "min-width", 1600 ),
+    "mq-large"   : ( "min-width", 1440 ),
+    "mq-medium"  : ( "min-width", 760 ),
+    "mq-small"   : ( "min-width", 480 )
+);
+
+
+
+
+
+//==============================================================================
+// Media Query mixin
+//==============================================================================
+
+@mixin mq( $point ) {
+    $query: map-get($breakpoints, $point);
+
+    @if not $query {
+        @warn "Oh shit! You are requesting an invalid breakpoint: #{$point}. :(";
+    } @else {
+        @media screen and ( nth($query,1): (nth($query,2))  ) {
+            @content;
+        }
+    }
+}
